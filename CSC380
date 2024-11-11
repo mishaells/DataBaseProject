@@ -26,7 +26,7 @@ public class CSC380 {
 
 			switch (queryChoice) {
 			case '1':
-				System.out.println("What table would you like to insert to:");
+				System.out.println("Choose table to insert into:");
 				System.out.println("1. EMPLOYEE");
 				System.out.println("2. BRANCH");
 				System.out.println("3. RESERVATION");
@@ -58,6 +58,36 @@ public class CSC380 {
 				break; // break insert
 
 			case '2':
+				System.out.println("Choose table to delete from:");
+				System.out.println("1. EMPLOYEE");
+				System.out.println("2. BRANCH");
+				System.out.println("3. RESERVATION");
+				System.out.println("4. CUSTOMER");
+				System.out.println("5. ITEM");
+				System.out.println("6. ORDERED_BY");
+
+				tableChoice = read.next().charAt(0);
+				switch (tableChoice) {
+				case '1':
+					DeleteEmployee();
+					break;
+				case '2':
+					DeleteBranch();
+					break;
+				case '3':
+					DeleteReservation();
+					break;
+				case '4':
+					DeleteCustomer();
+					break;
+				case '5':
+					 DeleteItem();
+					break;
+				case '6':
+					 DeleteOrderedBy();
+					break;
+				}
+				break; // break delete
 			}
 			/*
 			 * ResultSet ItemSel = stat.executeQuery("SELECT * FROM ITEM;");
@@ -134,10 +164,10 @@ public class CSC380 {
 			String phoneNum = read.next();
 			read.nextLine();
 			System.out.print("Manager ID: ");
-			String id = read.next();			
+			String id = read.next();
 
-			stat.executeUpdate(
-					"INSERT INTO BRANCH VALUES('" + code + "', '" + district + "', '" + city + "', '" + phoneNum + "', '" + id + "');");
+			stat.executeUpdate("INSERT INTO BRANCH VALUES('" + code + "', '" + district + "', '" + city + "', '"
+					+ phoneNum + "', '" + id + "');");
 
 			System.out.println("Operation executed successfully!");
 		} catch (Exception e) {
@@ -171,8 +201,8 @@ public class CSC380 {
 			System.out.print("Customer's Phone Number: ");
 			String phone = read.next();
 
-			stat.executeUpdate("INSERT INTO RESERVATION VALUES('" + ref + "', '" + date + "', '" + time + ":00', '" + table
-					+ "', '" + ppl + "', '" + code + "', '" + id + "', '" + phone + "');");
+			stat.executeUpdate("INSERT INTO RESERVATION VALUES('" + ref + "', '" + date + "', '" + time + ":00', '"
+					+ table + "', '" + ppl + "', '" + code + "', '" + id + "', '" + phone + "');");
 
 			System.out.println("Operation executed successfully!");
 		} catch (Exception e) {
@@ -203,7 +233,7 @@ public class CSC380 {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
-		}		
+		}
 	}
 
 	static void InsertItem() {
@@ -247,6 +277,88 @@ public class CSC380 {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 
+		}
+	}
+
+	static void DeleteEmployee() {
+		try {
+			System.out.print("Enter ID of the employee you'd like to delete: ");
+			String id = read.next();
+			stat.executeUpdate("DELETE FROM EMPLOYEE WHERE ID = '" + id + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+
+	}
+
+	static void DeleteBranch() {
+		try {
+			System.out.print("Enter code of the branch you'd like to delete: ");
+			String code = read.next();
+			stat.executeUpdate("DELETE FROM BRANCH WHERE Bcode = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteReservation() {
+		try {
+			System.out.print("Enter reference number of the reservation you'd like to delete: ");
+			String ref = read.next();
+			stat.executeUpdate("DELETE FROM RESERVATION WHERE Ref_no = '" + ref + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteCustomer() {
+		try {
+			System.out.print("Enter phone number of the customer you'd like to delete: ");
+			String phone = read.next();
+			stat.executeUpdate("DELETE FROM CUSTOMER WHERE Cphone_num = '" + phone + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+	
+	static void DeleteItem() {
+		try {
+			System.out.print("Enter code of the item you'd like to delete: ");
+			String code = read.next();
+			stat.executeUpdate("DELETE FROM ITEM WHERE Item_code = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}	
+	}
+	
+	static void DeleteOrderedBy() {
+		try {
+			System.out.print("Enter reference number of the reservation: ");
+			String ref = read.next();
+			System.out.print("Enter item code: ");
+			String code = read.next();
+			read.nextLine();
+			stat.executeUpdate("DELETE FROM ORDERED_BY WHERE Ref_no = '" + ref + "' AND Item_code = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
 		}
 	}
 }
