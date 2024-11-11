@@ -1,5 +1,3 @@
-package com.myapp;
-
 import java.sql.*;
 import java.util.*;
 
@@ -46,7 +44,7 @@ public class CSC380 {
 					InsertReservation();
 					break;
 				case '4':
-					//InsertCustomer();
+					InsertCustomer();
 					break;
 				case '5':
 					InsertItem();
@@ -72,26 +70,27 @@ public class CSC380 {
 
 	static void InsertEmployee() {
 		try {
-			System.out.print("Employee's National ID/Residence No.: ");
+			System.out.println("Enter Employee Information: ");
+			System.out.print("National ID/Residence No.: ");
 			String id = read.next();
 			read.nextLine();
-			System.out.print("Employee's First Name: ");
+			System.out.print("First Name: ");
 			String fname = read.next();
 			read.nextLine();
-			System.out.print("Employee's Middle Name: ");
+			System.out.print("Middle Name: ");
 			String mname = read.next();
 			read.nextLine();
-			System.out.print("Employee's Last Name: ");
+			System.out.print("Last Name: ");
 			String lname = read.next();
 			read.nextLine();
-			System.out.print("Employee's Position: ");
+			System.out.print("Position: ");
 			String position = read.nextLine();
-			System.out.print("Employee's Salary: ");
+			System.out.print("Salary: ");
 			double salary = read.nextDouble();
-			System.out.print("Employee's Phone Number: ");
+			System.out.print("Phone Number: ");
 			String ePhoneNum = read.next();
 			read.nextLine();
-			System.out.println("Employee's Address: ");
+			System.out.println("Address: ");
 			System.out.print("Street: ");
 			String street = read.nextLine();
 			System.out.print("District: ");
@@ -101,7 +100,8 @@ public class CSC380 {
 			read.nextLine();
 			System.out.print("City: ");
 			String city = read.nextLine();
-			System.out.print("Employee's Nationality: ");
+			System.out.println();
+			System.out.print("Nationality: ");
 			String nationality = read.nextLine();
 			System.out.print("Code of branch they are employed in: ");
 			String bCode = read.next();
@@ -120,17 +120,18 @@ public class CSC380 {
 
 	static void InsertBranch() {
 		try {
-			System.out.print("Branch Code: ");
+			System.out.println("Enter Branch Information: ");
+			System.out.print("Code: ");
 			String code = read.next();
 			read.nextLine();
-			System.out.print("Branch District: ");
+			System.out.print("District: ");
 			String district = read.nextLine();
-			System.out.print("Branch City: ");
+			System.out.print("City: ");
 			String city = read.nextLine();
-			System.out.print("Branch Phone Number: ");
+			System.out.print("Phone Number: ");
 			String phoneNum = read.next();
 			read.nextLine();
-			System.out.print("Branch's Manager ID: ");
+			System.out.print("Manager ID: ");
 			String id = read.next();			
 
 			stat.executeUpdate(
@@ -145,7 +146,8 @@ public class CSC380 {
 
 	static void InsertReservation() {
 		try {
-			System.out.print("Reservation Reference No.: ");
+			System.out.println("Enter Reservation Information: ");
+			System.out.print("Reference No.: ");
 			String ref = read.next();
 			read.nextLine();
 			System.out.print("Date(YYYY-MM-DD): ");
@@ -177,16 +179,42 @@ public class CSC380 {
 		}
 	}
 
+	static void InsertCustomer() {
+		try {
+			System.out.println("Enter Customer Information: ");
+			System.out.print("First Name: ");
+			String fname = read.next();
+			read.nextLine();
+			System.out.print("Last Name: ");
+			String lname = read.next();
+			read.nextLine();
+			System.out.print("Phone Number: ");
+			String phone = read.next();
+			read.nextLine();
+			System.out.print("Email: ");
+			String email = read.next();
+
+			stat.executeUpdate(
+					"INSERT INTO CUSTOMER VALUES('" + fname + "', '" + lname + "', '" + phone + "', '" + email + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e5) {
+			System.out.println(e5.getMessage());
+			System.out.println("Operation Unseccesful");
+		}		
+	}
+
 	static void InsertItem() {
 		try {
-			System.out.print("Item Code: ");
+			System.out.println("Enter Item Information: ");
+			System.out.print("Code: ");
 			String code = read.next();
 			read.nextLine();
-			System.out.print("Item Name: ");
+			System.out.print("Name: ");
 			String name = read.nextLine();
-			System.out.print("Item Category: ");
+			System.out.print("Category: ");
 			String category = read.nextLine();
-			System.out.print("Item Price: ");
+			System.out.print("Price: ");
 			double price = read.nextDouble();
 
 			stat.executeUpdate(
@@ -201,12 +229,13 @@ public class CSC380 {
 
 	static void InsertOrderedBy() {
 		try {
+			System.out.println("Enter the following information: ");
 			System.out.print("Item Code: ");
 			String code = read.next();
 			read.nextLine();
 			System.out.print("Reservation Reference Number: ");
 			String ref = read.nextLine();
-			System.out.print("Item Category: ");
+			System.out.print("Item Quantity: ");
 			int quantity = read.nextInt();
 
 			stat.executeUpdate("INSERT INTO ORDERED_BY VALUES('" + code + "', '" + ref + "', '" + quantity + "');");
