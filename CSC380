@@ -1,3 +1,5 @@
+package com.myapp;
+
 import java.sql.*;
 import java.util.*;
 
@@ -111,8 +113,8 @@ public class CSC380 {
 					+ "', '" + pCode + "', '" + city + "', '" + nationality + "', '" + bCode + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e1) {
-			System.out.println(e1.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 
 		}
@@ -138,8 +140,8 @@ public class CSC380 {
 					"INSERT INTO BRANCH VALUES('" + code + "', '" + district + "', '" + city + "', '" + phoneNum + "', '" + id + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e2) {
-			System.out.println(e2.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
 	}
@@ -173,8 +175,8 @@ public class CSC380 {
 					+ "', '" + ppl + "', '" + code + "', '" + id + "', '" + phone + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e3) {
-			System.out.println(e3.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
 	}
@@ -198,8 +200,8 @@ public class CSC380 {
 					"INSERT INTO CUSTOMER VALUES('" + fname + "', '" + lname + "', '" + phone + "', '" + email + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e5) {
-			System.out.println(e5.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}		
 	}
@@ -221,8 +223,8 @@ public class CSC380 {
 					"INSERT INTO ITEM VALUES('" + code + "', '" + name + "', '" + category + "', '" + price + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e5) {
-			System.out.println(e5.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
 	}
@@ -241,8 +243,8 @@ public class CSC380 {
 			stat.executeUpdate("INSERT INTO ORDERED_BY VALUES('" + code + "', '" + ref + "', '" + quantity + "');");
 
 			System.out.println("Operation executed successfully!");
-		} catch (Exception e6) {
-			System.out.println(e6.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 
 		}
