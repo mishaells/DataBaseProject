@@ -1,0 +1,221 @@
+package com.myapp;
+
+import java.sql.*;
+import java.util.*;
+
+public class CSC380 {
+	static Scanner read = new Scanner(System.in);
+	static Connection con = null;
+	static Statement stat = null;
+
+	public static void main(String[] args) {
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BLANCA", "root", "12345Abcde.");
+			stat = con.createStatement();
+
+			char queryChoice;
+			char tableChoice;
+
+			System.out.println("Select a query:");
+			System.out.println("1. Insert");
+			System.out.println("2. Delete");
+			System.out.println("3. Update");
+			System.out.println("4. Retrieve");
+
+			queryChoice = read.next().charAt(0);
+
+			switch (queryChoice) {
+			case '1':
+				System.out.println("What table would you like to insert to:");
+				System.out.println("1. EMPLOYEE");
+				System.out.println("2. BRANCH");
+				System.out.println("3. RESERVATION");
+				System.out.println("4. CUSTOMER");
+				System.out.println("5. ITEM");
+				System.out.println("6. ORDERED_BY");
+
+				tableChoice = read.next().charAt(0);
+				switch (tableChoice) {
+				case '1':
+					InsertEmployee();
+					break;
+				case '2':
+					InsertBranch();
+					break;
+				case '3':
+					InsertReservation();
+					break;
+				case '4':
+					//InsertCustomer();
+					break;
+				case '5':
+					InsertItem();
+					break;
+				case '6':
+					InsertOrderedBy();
+					break;
+				}
+				break; // break insert
+
+			case '2':
+			}
+			/*
+			 * ResultSet ItemSel = stat.executeQuery("SELECT * FROM ITEM;");
+			 * while(ItemSel.next()) { System.out.println(ItemSel.getString("Item_code")); }
+			 */
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	}
+
+	static void InsertEmployee() {
+		try {
+			System.out.print("Employee's National ID/Residence No.: ");
+			String id = read.next();
+			read.nextLine();
+			System.out.print("Employee's First Name: ");
+			String fname = read.next();
+			read.nextLine();
+			System.out.print("Employee's Middle Name: ");
+			String mname = read.next();
+			read.nextLine();
+			System.out.print("Employee's Last Name: ");
+			String lname = read.next();
+			read.nextLine();
+			System.out.print("Employee's Position: ");
+			String position = read.nextLine();
+			System.out.print("Employee's Salary: ");
+			double salary = read.nextDouble();
+			System.out.print("Employee's Phone Number: ");
+			String ePhoneNum = read.next();
+			read.nextLine();
+			System.out.println("Employee's Address: ");
+			System.out.print("Street: ");
+			String street = read.nextLine();
+			System.out.print("District: ");
+			String district = read.nextLine();
+			System.out.print("Postal Code: ");
+			String pCode = read.next();
+			read.nextLine();
+			System.out.print("City: ");
+			String city = read.nextLine();
+			System.out.print("Employee's Nationality: ");
+			String nationality = read.nextLine();
+			System.out.print("Code of branch they are employed in: ");
+			String bCode = read.next();
+
+			stat.executeUpdate("INSERT INTO EMPLOYEE VALUES('" + id + "', '" + fname + "', '" + mname + "', '" + lname
+					+ "', '" + position + "', '" + salary + "', '" + ePhoneNum + "', '" + street + "', '" + district
+					+ "', '" + pCode + "', '" + city + "', '" + nationality + "', '" + bCode + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e1) {
+			System.out.println(e1.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	}
+
+	static void InsertBranch() {
+		try {
+			System.out.print("Branch Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Branch District: ");
+			String district = read.nextLine();
+			System.out.print("Branch City: ");
+			String city = read.nextLine();
+			System.out.print("Branch Phone Number: ");
+			String phoneNum = read.next();
+			read.nextLine();
+			System.out.print("Branch's Manager ID: ");
+			String id = read.next();			
+
+			stat.executeUpdate(
+					"INSERT INTO BRANCH VALUES('" + code + "', '" + district + "', '" + city + "', '" + phoneNum + "', '" + id + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e2) {
+			System.out.println(e2.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertReservation() {
+		try {
+			System.out.print("Reservation Reference No.: ");
+			String ref = read.next();
+			read.nextLine();
+			System.out.print("Date(YYYY-MM-DD): ");
+			String date = read.next();
+			read.nextLine();
+			System.out.print("Time(HH:MM): ");
+			String time = read.next();
+			read.nextLine();
+			System.out.print("Table Number: ");
+			int table = read.nextInt();
+			System.out.print("Number of people: ");
+			int ppl = read.nextInt();
+			System.out.print("Branch Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Server's ID: ");
+			String id = read.next();
+			read.nextLine();
+			System.out.print("Customer's Phone Number: ");
+			String phone = read.next();
+
+			stat.executeUpdate("INSERT INTO RESERVATION VALUES('" + ref + "', '" + date + "', '" + time + ":00', '" + table
+					+ "', '" + ppl + "', '" + code + "', '" + id + "', '" + phone + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e3) {
+			System.out.println(e3.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertItem() {
+		try {
+			System.out.print("Item Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Item Name: ");
+			String name = read.nextLine();
+			System.out.print("Item Category: ");
+			String category = read.nextLine();
+			System.out.print("Item Price: ");
+			double price = read.nextDouble();
+
+			stat.executeUpdate(
+					"INSERT INTO ITEM VALUES('" + code + "', '" + name + "', '" + category + "', '" + price + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e5) {
+			System.out.println(e5.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertOrderedBy() {
+		try {
+			System.out.print("Item Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Reservation Reference Number: ");
+			String ref = read.nextLine();
+			System.out.print("Item Category: ");
+			int quantity = read.nextInt();
+
+			stat.executeUpdate("INSERT INTO ORDERED_BY VALUES('" + code + "', '" + ref + "', '" + quantity + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e6) {
+			System.out.println(e6.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	}
+}
