@@ -12,7 +12,7 @@ public class CSC380 {
 			stat = con.createStatement();
 
 			char queryChoice;
-			char tableChoice;
+			char Choice2;
 			System.out.println("Choose view:");
 			System.out.println("1. Manager");
 			System.out.println("2. Host");
@@ -28,7 +28,7 @@ public class CSC380 {
 				queryChoice = read.next().charAt(0);
 
 				switch (queryChoice) {
-				case '1':
+				case '1': // insert
 					System.out.println("Choose table to insert into:");
 					System.out.println("1. EMPLOYEE");
 					System.out.println("2. BRANCH");
@@ -37,8 +37,8 @@ public class CSC380 {
 					System.out.println("5. ITEM");
 					System.out.println("6. ORDERED_BY");
 
-					tableChoice = read.next().charAt(0);
-					switch (tableChoice) {
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
 					case '1':
 						InsertEmployee();
 						break;
@@ -60,7 +60,7 @@ public class CSC380 {
 					} // end table switch
 					break; // break insert
 
-				case '2':
+				case '2': // delete
 					System.out.println("Choose table to delete from:");
 					System.out.println("1. EMPLOYEE");
 					System.out.println("2. BRANCH");
@@ -69,8 +69,8 @@ public class CSC380 {
 					System.out.println("5. ITEM");
 					System.out.println("6. ORDERED_BY");
 
-					tableChoice = read.next().charAt(0);
-					switch (tableChoice) {
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
 					case '1':
 						DeleteEmployee();
 						break;
@@ -91,6 +91,47 @@ public class CSC380 {
 						break;
 					}
 					break; // break delete
+
+				case '3': // update
+					System.out.println("Select an update:");
+					System.out.println("1. Update employee's salary");
+					System.out.println("2. Update employee's district");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						// UpdateEmployeeSalary();
+						break;
+					case '2':
+						// UpdateEmployeeDistrict();
+						break;
+					}
+					break; // break update
+
+				case '4': // retrieve
+					System.out.println("Select a retrieval:");
+					System.out.println("1. First and last name of an employee");
+					System.out.println("2. Total number of branches");
+					System.out.println(
+							"3. Employees names working in a specific branch, along with the branch's district and city");
+					System.out.println("4. Customer names and reservation details, including their server");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						// ManagerRetrieve1();
+						break;
+					case '2':
+						// ManagerRetrieve2();
+						break;
+					case '3':
+						// ManagerRetrieve3();
+						break;
+					case '4':
+						// ManagerRetrieve4();
+						break;
+					}
+					break; // break retrieve
 				} // end query switch
 			} // end manager view
 
@@ -111,8 +152,8 @@ public class CSC380 {
 					System.out.println("3. ITEM");
 					System.out.println("4. ORDERED_BY");
 
-					tableChoice = read.next().charAt(0);
-					switch (tableChoice) {
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
 					case '1':
 						InsertReservation();
 						break;
@@ -135,8 +176,8 @@ public class CSC380 {
 					System.out.println("3. ITEM");
 					System.out.println("4. ORDERED_BY");
 
-					tableChoice = read.next().charAt(0);
-					switch (tableChoice) {
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
 					case '1':
 						DeleteReservation();
 						break;
@@ -151,12 +192,55 @@ public class CSC380 {
 						break;
 					}
 					break; // break delete
+
+				case '3': // update
+					System.out.println("Select an update:");
+					System.out.println("1. Update customer's email");
+					System.out.println("2. Update number of people in a reservation");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						// UpdateCustomerEmail();
+						break;
+					case '2':
+						// UpdateNumOfPpl();
+						break;
+					}
+					break; // break update
+
+				case '4': // retrieve
+					System.out.println("Select a retrieval:");
+					System.out.println("1. Menu items of a specific category and more than a specific price");
+					System.out.println("2. Table number of a reservation");
+					System.out.println("3. Customers that have a reservation on a specific date");
+					System.out.println(
+							"4. All reservations details including the date, names of its customers, and the items they ordered along with their quantities");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						// HostRetrieve1();
+						break;
+					case '2':
+						// HostRetrieve2();
+						break;
+					case '3':
+						// HostRetrieve3();
+						break;
+					case '4':
+						// HostRetrieve4();
+						break;
+					}
+					break; // break retrieve
 				} // end query switch
-			} //end host view
+			} // end host view
+
 			/*
 			 * ResultSet ItemSel = stat.executeQuery("SELECT * FROM ITEM;");
 			 * while(ItemSel.next()) { System.out.println(ItemSel.getString("Item_code")); }
 			 */
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
@@ -425,4 +509,3 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
-} //end class
