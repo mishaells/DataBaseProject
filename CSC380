@@ -13,80 +13,146 @@ public class CSC380 {
 
 			char queryChoice;
 			char tableChoice;
+			System.out.println("Choose view:");
+			System.out.println("1. Manager");
+			System.out.println("2. Host");
+			int view = read.nextInt();
+			if (view == 1) {
 
-			System.out.println("Select a query:");
-			System.out.println("1. Insert");
-			System.out.println("2. Delete");
-			System.out.println("3. Update");
-			System.out.println("4. Retrieve");
+				System.out.println("Select a query:");
+				System.out.println("1. Insert");
+				System.out.println("2. Delete");
+				System.out.println("3. Update");
+				System.out.println("4. Retrieve");
 
-			queryChoice = read.next().charAt(0);
+				queryChoice = read.next().charAt(0);
 
-			switch (queryChoice) {
-			case '1':
-				System.out.println("Choose table to insert into:");
-				System.out.println("1. EMPLOYEE");
-				System.out.println("2. BRANCH");
-				System.out.println("3. RESERVATION");
-				System.out.println("4. CUSTOMER");
-				System.out.println("5. ITEM");
-				System.out.println("6. ORDERED_BY");
-
-				tableChoice = read.next().charAt(0);
-				switch (tableChoice) {
+				switch (queryChoice) {
 				case '1':
-					InsertEmployee();
-					break;
+					System.out.println("Choose table to insert into:");
+					System.out.println("1. EMPLOYEE");
+					System.out.println("2. BRANCH");
+					System.out.println("3. RESERVATION");
+					System.out.println("4. CUSTOMER");
+					System.out.println("5. ITEM");
+					System.out.println("6. ORDERED_BY");
+
+					tableChoice = read.next().charAt(0);
+					switch (tableChoice) {
+					case '1':
+						InsertEmployee();
+						break;
+					case '2':
+						InsertBranch();
+						break;
+					case '3':
+						InsertReservation();
+						break;
+					case '4':
+						InsertCustomer();
+						break;
+					case '5':
+						InsertItem();
+						break;
+					case '6':
+						InsertOrderedBy();
+						break;
+					} // end table switch
+					break; // break insert
+
 				case '2':
-					InsertBranch();
-					break;
-				case '3':
-					InsertReservation();
-					break;
-				case '4':
-					InsertCustomer();
-					break;
-				case '5':
-					InsertItem();
-					break;
-				case '6':
-					InsertOrderedBy();
-					break;
-				}
-				break; // break insert
+					System.out.println("Choose table to delete from:");
+					System.out.println("1. EMPLOYEE");
+					System.out.println("2. BRANCH");
+					System.out.println("3. RESERVATION");
+					System.out.println("4. CUSTOMER");
+					System.out.println("5. ITEM");
+					System.out.println("6. ORDERED_BY");
 
-			case '2':
-				System.out.println("Choose table to delete from:");
-				System.out.println("1. EMPLOYEE");
-				System.out.println("2. BRANCH");
-				System.out.println("3. RESERVATION");
-				System.out.println("4. CUSTOMER");
-				System.out.println("5. ITEM");
-				System.out.println("6. ORDERED_BY");
+					tableChoice = read.next().charAt(0);
+					switch (tableChoice) {
+					case '1':
+						DeleteEmployee();
+						break;
+					case '2':
+						DeleteBranch();
+						break;
+					case '3':
+						DeleteReservation();
+						break;
+					case '4':
+						DeleteCustomer();
+						break;
+					case '5':
+						DeleteItem();
+						break;
+					case '6':
+						DeleteOrderedBy();
+						break;
+					}
+					break; // break delete
+				} // end query switch
+			} // end manager view
 
-				tableChoice = read.next().charAt(0);
-				switch (tableChoice) {
+			if (view == 2) {
+				System.out.println("Select a query:");
+				System.out.println("1. Insert");
+				System.out.println("2. Delete");
+				System.out.println("3. Update");
+				System.out.println("4. Retrieve");
+
+				queryChoice = read.next().charAt(0);
+
+				switch (queryChoice) {
 				case '1':
-					DeleteEmployee();
-					break;
+					System.out.println("Choose table to insert into:");
+					System.out.println("1. RESERVATION");
+					System.out.println("2. CUSTOMER");
+					System.out.println("3. ITEM");
+					System.out.println("4. ORDERED_BY");
+
+					tableChoice = read.next().charAt(0);
+					switch (tableChoice) {
+					case '1':
+						InsertReservation();
+						break;
+					case '2':
+						InsertCustomer();
+						break;
+					case '3':
+						InsertItem();
+						break;
+					case '4':
+						InsertOrderedBy();
+						break;
+					} // end table switch
+					break; // break insert
+
 				case '2':
-					DeleteBranch();
-					break;
-				case '3':
-					DeleteReservation();
-					break;
-				case '4':
-					DeleteCustomer();
-					break;
-				case '5':
-					 DeleteItem();
-					break;
-				case '6':
-					 DeleteOrderedBy();
-					break;
-				}
-				break; // break delete
-			}
+					System.out.println("Choose table to delete from:");
+					System.out.println("1. RESERVATION");
+					System.out.println("2. CUSTOMER");
+					System.out.println("3. ITEM");
+					System.out.println("4. ORDERED_BY");
+
+					tableChoice = read.next().charAt(0);
+					switch (tableChoice) {
+					case '1':
+						DeleteReservation();
+						break;
+					case '2':
+						DeleteCustomer();
+						break;
+					case '3':
+						DeleteItem();
+						break;
+					case '4':
+						DeleteOrderedBy();
+						break;
+					}
+					break; // break delete
+				} // end query switch
+			} //end host view
 			/*
 			 * ResultSet ItemSel = stat.executeQuery("SELECT * FROM ITEM;");
 			 * while(ItemSel.next()) { System.out.println(ItemSel.getString("Item_code")); }
@@ -96,7 +162,7 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 
 		}
-	}
+	} // end main
 
 	static void InsertEmployee() {
 		try {
@@ -330,7 +396,7 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
-	
+
 	static void DeleteItem() {
 		try {
 			System.out.print("Enter code of the item you'd like to delete: ");
@@ -341,9 +407,9 @@ public class CSC380 {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
-		}	
+		}
 	}
-	
+
 	static void DeleteOrderedBy() {
 		try {
 			System.out.print("Enter reference number of the reservation: ");
@@ -359,4 +425,4 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
-}
+} //end class
