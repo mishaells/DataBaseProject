@@ -8,7 +8,7 @@ public class CSC380 {
 
 	public static void main(String[] args) {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BLANCA", "root", "12345Abcde.");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
 			stat = con.createStatement();
 
 			char queryChoice;
