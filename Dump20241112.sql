@@ -1,5 +1,3 @@
--- MySQL dump 10.13  Distrib 8.0.40, for macos14 (arm64)
---
 -- Host: localhost    Database: blancadatabase
 -- ------------------------------------------------------
 -- Server version	9.1.0
