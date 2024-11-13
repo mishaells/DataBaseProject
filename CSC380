@@ -508,10 +508,12 @@ public class CSC380 {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
+	}
+
 	static void ManagerRetrieve4() {
 		try {
 			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
-					+ "FROM EMPLOYEE, CUSTOMER, RESERVATION\n"
+					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
 					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
 			
 			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
@@ -524,7 +526,7 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
-
+	
 	static void HostRetrieve4() {
 		try {
 			ResultSet retrieve = stat.executeQuery("SELECT RESERVATION.Ref_no, Date, C_Fname,C_Lname, Name, Quantity\n"
@@ -541,4 +543,4 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
-	}
+} // end class
