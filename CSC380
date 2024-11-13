@@ -128,7 +128,7 @@ public class CSC380 {
 						// ManagerRetrieve3();
 						break;
 					case '4':
-						// ManagerRetrieve4();
+						ManagerRetrieve4();
 						break;
 					}
 					break; // break retrieve
@@ -508,4 +508,20 @@ public class CSC380 {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
+	static void ManagerRetrieve4() {
+		try {
+			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
+					+ "FROM EMPLOYEE, CUSTOMER, RESERVATION\n"
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
+			
+			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t" + retrieve.getString("C_Fname") + " "+ retrieve.getString("C_Lname") + "\t" +retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
 	}
