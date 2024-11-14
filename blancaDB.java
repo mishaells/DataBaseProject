@@ -1,0 +1,632 @@
+package blancaDB;
+
+import java.sql.*;
+import java.util.*;
+
+public class blancaDB {
+	static Scanner read = new Scanner(System.in);
+	static Connection con = null;
+	static Statement stat = null;
+
+	public static void main(String[] args) {
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
+			stat = con.createStatement();
+
+			char queryChoice;
+			char Choice2;
+			System.out.println("Choose view:");
+			System.out.println("1. Manager");
+			System.out.println("2. Host");
+			int view = read.nextInt();
+			if (view == 1) {
+
+				System.out.println("Select a query:");
+				System.out.println("1. Insert");
+				System.out.println("2. Delete");
+				System.out.println("3. Update");
+				System.out.println("4. Retrieve");
+
+				queryChoice = read.next().charAt(0);
+
+				switch (queryChoice) {
+				case '1': // insert
+					System.out.println("Choose table to insert into:");
+					System.out.println("1. EMPLOYEE");
+					System.out.println("2. BRANCH");
+					System.out.println("3. RESERVATION");
+					System.out.println("4. CUSTOMER");
+					System.out.println("5. ITEM");
+					System.out.println("6. ORDERED_BY");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						InsertEmployee();
+						break;
+					case '2':
+						InsertBranch();
+						break;
+					case '3':
+						InsertReservation();
+						break;
+					case '4':
+						InsertCustomer();
+						break;
+					case '5':
+						InsertItem();
+						break;
+					case '6':
+						InsertOrderedBy();
+						break;
+					} // end table switch
+					break; // break insert
+
+				case '2': // delete
+					System.out.println("Choose table to delete from:");
+					System.out.println("1. EMPLOYEE");
+					System.out.println("2. BRANCH");
+					System.out.println("3. RESERVATION");
+					System.out.println("4. CUSTOMER");
+					System.out.println("5. ITEM");
+					System.out.println("6. ORDERED_BY");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						DeleteEmployee();
+						break;
+					case '2':
+						DeleteBranch();
+						break;
+					case '3':
+						DeleteReservation();
+						break;
+					case '4':
+						DeleteCustomer();
+						break;
+					case '5':
+						DeleteItem();
+						break;
+					case '6':
+						DeleteOrderedBy();
+						break;
+					}
+					break; // break delete
+
+				case '3': // update
+					System.out.println("Select an update:");
+					System.out.println("1. Update employee's salary");
+					System.out.println("2. Update employee's district");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						UpdateEmployeeSalary();
+						break;
+					case '2':
+						UpdateEmployeeDistrict();
+						break;
+					}
+					break; // break update
+
+				case '4': // retrieve
+					System.out.println("Select a retrieval:");
+					System.out.println("1. First and last name of an employee");
+					System.out.println("2. Total number of branches");
+					System.out.println(
+							"3. Employees names working in a specific branch, along with the branch's district and city");
+					System.out.println("4. Customer names and reservation details, including their server");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						// ManagerRetrieve1();
+						break;
+					case '2':
+						// ManagerRetrieve2();
+						break;
+					case '3':
+						// ManagerRetrieve3();
+						break;
+					case '4':
+						ManagerRetrieve4();
+						break;
+					}
+					break; // break retrieve
+				} // end query switch
+			} // end manager view
+
+			if (view == 2) {
+				System.out.println("Select a query:");
+				System.out.println("1. Insert");
+				System.out.println("2. Delete");
+				System.out.println("3. Update");
+				System.out.println("4. Retrieve");
+
+				queryChoice = read.next().charAt(0);
+
+				switch (queryChoice) {
+				case '1':
+					System.out.println("Choose table to insert into:");
+					System.out.println("1. RESERVATION");
+					System.out.println("2. CUSTOMER");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						InsertReservation();
+						break;
+					case '2':
+						InsertCustomer();
+						break;
+					} // end table switch
+					break; // break insert
+
+				case '2':
+					System.out.println("Choose table to delete from:");
+					System.out.println("1. RESERVATION");
+					System.out.println("2. CUSTOMER");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						DeleteReservation();
+						break;
+					case '2':
+						DeleteCustomer();
+						break;
+					}
+					break; // break delete
+
+				case '3': // update
+					System.out.println("Select an update:");
+					System.out.println("1. Update customer's email");
+					System.out.println("2. Update number of people in a reservation");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						UpdateCustomerEmail();
+						break;
+					case '2':
+						UpdateNumOfPpl();
+						break;
+					}
+					break; // break update
+
+				case '4': // retrieve
+					System.out.println("Select a retrieval:");
+					System.out.println("1. Menu items of a specific category and more than a specific price");
+					System.out.println("2. Table number of a reservation");
+					System.out.println("3. Customers that have a reservation on a specific date");
+					System.out.println(
+							"4. All reservations details including their reference number, date, names of its customers, and the items they ordered along with their quantities");
+
+					Choice2 = read.next().charAt(0);
+					switch (Choice2) {
+					case '1':
+						HostRetrieve1();
+						break;
+					case '2':
+						// HostRetrieve2();
+						break;
+					case '3':
+						// HostRetrieve3();
+						break;
+					case '4':
+						HostRetrieve4();
+						break;
+					}
+					break; // break retrieve
+				} // end query switch
+			} // end host view
+
+			/*
+			 * ResultSet ItemSel = stat.executeQuery("SELECT * FROM ITEM;");
+			 * while(ItemSel.next()) { System.out.println(ItemSel.getString("Item_code")); }
+			 */
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	} // end main
+
+	static void InsertEmployee() {
+		try {
+			System.out.println("Enter Employee Information: ");
+			System.out.print("National ID/Residence No.: ");
+			String id = read.next();
+			read.nextLine();
+			System.out.print("First Name: ");
+			String fname = read.next();
+			read.nextLine();
+			System.out.print("Middle Name: ");
+			String mname = read.next();
+			read.nextLine();
+			System.out.print("Last Name: ");
+			String lname = read.next();
+			read.nextLine();
+			System.out.print("Position: ");
+			String position = read.nextLine();
+			System.out.print("Salary: ");
+			double salary = read.nextDouble();
+			System.out.print("Phone Number: ");
+			String ePhoneNum = read.next();
+			read.nextLine();
+			System.out.println("Address: ");
+			System.out.print("Street: ");
+			String street = read.nextLine();
+			System.out.print("District: ");
+			String district = read.nextLine();
+			System.out.print("Postal Code: ");
+			String pCode = read.next();
+			read.nextLine();
+			System.out.print("City: ");
+			String city = read.nextLine();
+			System.out.println();
+			System.out.print("Nationality: ");
+			String nationality = read.nextLine();
+			System.out.print("Code of branch they are employed in: ");
+			String bCode = read.next();
+
+			stat.executeUpdate("INSERT INTO EMPLOYEE VALUES('" + id + "', '" + fname + "', '" + mname + "', '" + lname
+					+ "', '" + position + "', '" + salary + "', '" + ePhoneNum + "', '" + street + "', '" + district
+					+ "', '" + pCode + "', '" + city + "', '" + nationality + "', '" + bCode + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	}
+
+	static void InsertBranch() {
+		try {
+			System.out.println("Enter Branch Information: ");
+			System.out.print("Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("District: ");
+			String district = read.nextLine();
+			System.out.print("City: ");
+			String city = read.nextLine();
+			System.out.print("Phone Number: ");
+			String phoneNum = read.next();
+			read.nextLine();
+			System.out.print("Manager ID: ");
+			String id = read.next();
+
+			stat.executeUpdate("INSERT INTO BRANCH VALUES('" + code + "', '" + district + "', '" + city + "', '"
+					+ phoneNum + "', '" + id + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertReservation() {
+		try {
+			System.out.println("Enter Reservation Information: ");
+			System.out.print("Reference No.: ");
+			String ref = read.next();
+			read.nextLine();
+			System.out.print("Date(YYYY-MM-DD): ");
+			String date = read.next();
+			read.nextLine();
+			System.out.print("Time(HH:MM): ");
+			String time = read.next();
+			read.nextLine();
+			System.out.print("Table Number: ");
+			int table = read.nextInt();
+			System.out.print("Number of people: ");
+			int ppl = read.nextInt();
+			System.out.print("Branch Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Server's ID: ");
+			String id = read.next();
+			read.nextLine();
+			System.out.print("Customer's Phone Number: ");
+			String phone = read.next();
+
+			stat.executeUpdate("INSERT INTO RESERVATION VALUES('" + ref + "', '" + date + "', '" + time + ":00', '"
+					+ table + "', '" + ppl + "', '" + code + "', '" + id + "', '" + phone + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertCustomer() {
+		try {
+			System.out.println("Enter Customer Information: ");
+			System.out.print("First Name: ");
+			String fname = read.next();
+			read.nextLine();
+			System.out.print("Last Name: ");
+			String lname = read.next();
+			read.nextLine();
+			System.out.print("Phone Number: ");
+			String phone = read.next();
+			read.nextLine();
+			System.out.print("Email: ");
+			String email = read.next();
+
+			stat.executeUpdate(
+					"INSERT INTO CUSTOMER VALUES('" + fname + "', '" + lname + "', '" + phone + "', '" + email + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertItem() {
+		try {
+			System.out.println("Enter Item Information: ");
+			System.out.print("Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Name: ");
+			String name = read.nextLine();
+			System.out.print("Category: ");
+			String category = read.nextLine();
+			System.out.print("Price: ");
+			double price = read.nextDouble();
+
+			stat.executeUpdate(
+					"INSERT INTO ITEM VALUES('" + code + "', '" + name + "', '" + category + "', '" + price + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void InsertOrderedBy() {
+		try {
+			System.out.println("Enter the following information: ");
+			System.out.print("Item Code: ");
+			String code = read.next();
+			read.nextLine();
+			System.out.print("Reservation Reference Number: ");
+			String ref = read.nextLine();
+			System.out.print("Item Quantity: ");
+			int quantity = read.nextInt();
+
+			stat.executeUpdate("INSERT INTO ORDERED_BY VALUES('" + code + "', '" + ref + "', '" + quantity + "');");
+
+			System.out.println("Operation executed successfully!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+
+		}
+	}
+
+	static void DeleteEmployee() {
+		try {
+			System.out.print("Enter ID of the employee you'd like to delete: ");
+			String id = read.next();
+			stat.executeUpdate("DELETE FROM EMPLOYEE WHERE ID = '" + id + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+
+	}
+
+	static void DeleteBranch() {
+		try {
+			System.out.print("Enter code of the branch you'd like to delete: ");
+			String code = read.next();
+			stat.executeUpdate("DELETE FROM BRANCH WHERE Bcode = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteReservation() {
+		try {
+			System.out.print("Enter reference number of the reservation you'd like to delete: ");
+			String ref = read.next();
+			stat.executeUpdate("DELETE FROM RESERVATION WHERE Ref_no = '" + ref + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteCustomer() {
+		try {
+			System.out.print("Enter phone number of the customer you'd like to delete: ");
+			String phone = read.next();
+			stat.executeUpdate("DELETE FROM CUSTOMER WHERE Cphone_num = '" + phone + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteItem() {
+		try {
+			System.out.print("Enter code of the item you'd like to delete: ");
+			String code = read.next();
+			stat.executeUpdate("DELETE FROM ITEM WHERE Item_code = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void DeleteOrderedBy() {
+		try {
+			System.out.print("Enter reference number of the reservation: ");
+			String ref = read.next();
+			System.out.print("Enter item code: ");
+			String code = read.next();
+			read.nextLine();
+			stat.executeUpdate("DELETE FROM ORDERED_BY WHERE Ref_no = '" + ref + "' AND Item_code = '" + code + "';");
+			System.out.println("Operation executed successfully!");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void ManagerRetrieve4() {
+		try {
+			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
+					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
+
+			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
+						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
+						+ retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+	
+	static void HostRetrieve1() {
+		try {
+			
+			System.out.print("Enter the Category: ");
+			String Category = read.next();
+
+			System.out.print("Enter the Price: ");
+			float Price = read.nextFloat();
+			
+			ResultSet retrieve = stat.executeQuery("SELECT name FROM ITEM WHERE category = '" + Category + "'AND Price > " + Price);
+			System.out.println("Name\t");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Name"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void HostRetrieve4() {
+		try {
+			ResultSet retrieve = stat.executeQuery("SELECT RESERVATION.Ref_no, Date, C_Fname,C_Lname, Name, Quantity\n"
+					+ "FROM RESERVATION, CUSTOMER, ITEM, ORDERED_BY\n"
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Ref_no = ORDERED_BY.Ref_no AND ORDERED_BY.Item_code = ITEM.Item_code;");
+
+			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tMenue Item\tQuantity");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
+						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
+						+ retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
+	static void UpdateEmployeeSalary() {
+		try {
+			System.out.print("Enter the ID of the employee whose salary you'd like to update: ");
+			String id = read.next();
+
+			System.out.print("Enter the new salary: ");
+			double newSalary = read.nextDouble();
+
+			stat.executeUpdate("UPDATE EMPLOYEE SET Salary = " + newSalary + " WHERE ID = '" + id + "';");
+			System.out.println("Employee salary updated successfully!");
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+	static void UpdateEmployeeDistrict() {
+		try {
+			System.out.print("Enter the ID of the employee whose district you'd like to update: ");
+			String id = read.next();
+			read.nextLine();
+
+			System.out.print("Enter the new district: ");
+			String newDistrict = read.nextLine();
+
+			stat.executeUpdate("UPDATE EMPLOYEE SET District = '" + newDistrict + "' WHERE ID = '" + id + "';");
+			System.out.println("Employee district updated successfully!");
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+	static void UpdateCustomerEmail() {
+		try {
+			System.out.print("Enter the phone number of the customer whose email you'd like to update: ");
+			String phone = read.next();
+			read.nextLine();
+
+			System.out.print("Enter the new email: ");
+			String newEmail = read.nextLine();
+
+			stat.executeUpdate("UPDATE CUSTOMER SET Email = '" + newEmail + "' WHERE Cphone_num = '" + phone + "';");
+			System.out.println("Customer email updated successfully!");
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+	static void UpdateNumOfPpl() {
+		try {
+			System.out.print("Enter the reference number of the reservation you'd like to update: ");
+			String ref = read.next();
+
+			System.out.print("Enter the new number of people: ");
+			int numPeople = read.nextInt();
+
+			stat.executeUpdate("UPDATE RESERVATION SET Num_of_ppl = " + numPeople + " WHERE Ref_no = '" + ref + "';");
+			System.out.println("Number of people in reservation updated successfully!");
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+} // end class
