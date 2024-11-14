@@ -100,10 +100,10 @@ public class CSC380 {
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
 					case '1':
-						// UpdateEmployeeSalary();
+						UpdateEmployeeSalary();
 						break;
 					case '2':
-						// UpdateEmployeeDistrict();
+						UpdateEmployeeDistrict();
 						break;
 					}
 					break; // break update
@@ -185,10 +185,10 @@ public class CSC380 {
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
 					case '1':
-						// UpdateCustomerEmail();
+						UpdateCustomerEmail();
 						break;
 					case '2':
-						// UpdateNumOfPpl();
+					 UpdateNumOfPpl();
 						break;
 					}
 					break; // break update
@@ -527,4 +527,76 @@ public class CSC380 {
 			System.out.println("Operation Unseccesful");
 		}
 	}
+   
+   static void UpdateEmployeeSalary() {
+    try {
+        System.out.print("Enter the ID of the employee whose salary you'd like to update: ");
+        String id = read.next();
+
+        System.out.print("Enter the new salary: ");
+        double newSalary = read.nextDouble();
+        
+        stat.executeUpdate("UPDATE EMPLOYEE SET Salary = " + newSalary + " WHERE ID = '" + id + "';");
+        System.out.println("Employee salary updated successfully!");
+        }
+        
+     catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateEmployeeDistrict() {
+    try {
+        System.out.print("Enter the ID of the employee whose district you'd like to update: ");
+        String id = read.next();
+        read.nextLine();  
+        
+        System.out.print("Enter the new district: ");
+        String newDistrict = read.nextLine();
+        
+        stat.executeUpdate("UPDATE EMPLOYEE SET District = '" + newDistrict + "' WHERE ID = '" + id + "';");
+        System.out.println("Employee district updated successfully!"); 
+    } 
+    
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateCustomerEmail() {
+    try {
+        System.out.print("Enter the phone number of the customer whose email you'd like to update: ");
+        String phone = read.next();
+        read.nextLine();  
+        
+        System.out.print("Enter the new email: ");
+        String newEmail = read.nextLine();
+        
+        stat.executeUpdate("UPDATE CUSTOMER SET Email = '" + newEmail + "' WHERE Cphone_num = '" + phone + "';");
+        System.out.println("Customer email updated successfully!");  
+    } 
+    
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateNumOfPpl() {
+    try {
+        System.out.print("Enter the reference number of the reservation you'd like to update: ");
+        String ref = read.next();
+        
+        System.out.print("Enter the new number of people: ");
+        int numPeople = read.nextInt();
+        
+        stat.executeUpdate("UPDATE RESERVATION SET Num_of_people = " + numPeople + " WHERE Ref_no = '" + ref + "';");
+        System.out.println("Number of people in reservation updated successfully!");  
+    }
+    
+     catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+
 } // end class
