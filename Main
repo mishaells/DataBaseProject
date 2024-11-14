@@ -120,12 +120,51 @@ public class CSC380 {
 					switch (Choice2) {
 					case '1':
 						// ManagerRetrieve1();
+                  static void ManagerRetrieve1() {
+    try {
+        System.out.print("Enter Employee ID: ");
+        String employeeID = read.next();
+        
+        ResultSet result = stat.executeQuery("SELECT first_name, last_name FROM EMPLOYEE WHERE ID = '" + employeeID + "';");
+        
+        if (result.next()) {
+            System.out.println("Employee Name: " + result.getString("first_name") + " " + result.getString("last_name"));
+        } else {
+            System.out.println("Employee not found.");
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
 						break;
 					case '2':
 						// ManagerRetrieve2();
 						break;
 					case '3':
 						// ManagerRetrieve3();
+                  static void ManagerRetrieve3() {
+    try {
+        System.out.print("Enter Branch Code: ");
+        String branchCode = read.next();
+        
+        ResultSet result = stat.executeQuery(
+            "SELECT EMPLOYEE.first_name, EMPLOYEE.last_name, BRANCH.District, BRANCH.City " +
+            "FROM EMPLOYEE JOIN BRANCH ON EMPLOYEE.Bcode = BRANCH.Bcode " +
+            "WHERE BRANCH.Bcode = '" + branchCode + "';"
+        );
+        
+        System.out.println("Employee Name\t\tDistrict\tCity");
+        
+        while (result.next()) {
+            System.out.println(result.getString("first_name") + " " + result.getString("last_name") + "\t\t" +
+                               result.getString("District") + "\t\t" + result.getString("City"));
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
 						break;
 					case '4':
 						ManagerRetrieve4();
@@ -188,7 +227,7 @@ public class CSC380 {
 						UpdateCustomerEmail();
 						break;
 					case '2':
-						UpdateNumOfPpl();
+					 UpdateNumOfPpl();
 						break;
 					}
 					break; // break update
@@ -208,9 +247,49 @@ public class CSC380 {
 						break;
 					case '2':
 						// HostRetrieve2();
+                  static void HostRetrieve2() {
+    try {
+        System.out.print("Enter Reservation Reference Number: ");
+        String refNo = read.next();
+        
+        ResultSet result = stat.executeQuery(
+            "SELECT Table_num FROM RESERVATION WHERE Ref_no = '" + refNo + "';"
+        );
+        
+        if (result.next()) {
+            System.out.println("Table Number: " + result.getInt("Table_num"));
+        } else {
+            System.out.println("Reservation not found.");
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
 						break;
 					case '3':
 						// HostRetrieve3();
+                  static void HostRetrieve3() {
+    try {
+        System.out.print("Enter Reservation Date (YYYY-MM-DD): ");
+        String date = read.next();
+        
+        ResultSet result = stat.executeQuery(
+            "SELECT C_Fname, C_Lname, Cphone_num FROM CUSTOMER " +
+            "JOIN RESERVATION ON CUSTOMER.Cphone_num = RESERVATION.Cphone_num " +
+            "WHERE RESERVATION.Date = '" + date + "';"
+        );
+        
+        System.out.println("Customer Name\t\tPhone Number");
+        
+        while (result.next()) {
+            System.out.println(result.getString("C_Fname") + " " + result.getString("C_Lname") + "\t\t" + result.getString("Cphone_num"));
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
 						break;
 					case '4':
 						HostRetrieve4();
@@ -494,116 +573,109 @@ public class CSC380 {
 		}
 	}
 
-	static void UpdateEmployeeSalary() {
-		try {
-			System.out.print("Enter the ID of the employee whose salary you'd like to update: ");
-			String id = read.next();
-
-			System.out.print("Enter the new salary: ");
-			double newSalary = read.nextDouble();
-
-			stat.executeUpdate("UPDATE EMPLOYEE SET Salary = " + newSalary + " WHERE ID = '" + id + "';");
-			System.out.println("Employee salary updated successfully!");
-		}
-
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unsuccessful");
-		}
-	}
-
-	static void UpdateEmployeeDistrict() {
-		try {
-			System.out.print("Enter the ID of the employee whose district you'd like to update: ");
-			String id = read.next();
-			read.nextLine();
-
-			System.out.print("Enter the new district: ");
-			String newDistrict = read.nextLine();
-
-			stat.executeUpdate("UPDATE EMPLOYEE SET District = '" + newDistrict + "' WHERE ID = '" + id + "';");
-			System.out.println("Employee district updated successfully!");
-		}
-
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unsuccessful");
-		}
-	}
-
 	static void ManagerRetrieve4() {
 		try {
 			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
 					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
 					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
-
+			
 			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
 
 			while (retrieve.next())
-				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
-						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
-						+ retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
-
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t" + retrieve.getString("C_Fname") + " "+ retrieve.getString("C_Lname") + "\t" +retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
 	}
-
-	static void UpdateCustomerEmail() {
-		try {
-			System.out.print("Enter the phone number of the customer whose email you'd like to update: ");
-			String phone = read.next();
-			read.nextLine();
-
-			System.out.print("Enter the new email: ");
-			String newEmail = read.nextLine();
-
-			stat.executeUpdate("UPDATE CUSTOMER SET Email = '" + newEmail + "' WHERE Cphone_num = '" + phone + "';");
-			System.out.println("Customer email updated successfully!");
-		}
-
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unsuccessful");
-		}
-	}
-
-	static void UpdateNumOfPpl() {
-		try {
-			System.out.print("Enter the reference number of the reservation you'd like to update: ");
-			String ref = read.next();
-
-			System.out.print("Enter the new number of people: ");
-			int numPeople = read.nextInt();
-
-			stat.executeUpdate("UPDATE RESERVATION SET Num_of_ppl = " + numPeople + " WHERE Ref_no = '" + ref + "';");
-			System.out.println("Number of people in reservation updated successfully!");
-		}
-
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unsuccessful");
-		}
-	}
-
+	
 	static void HostRetrieve4() {
 		try {
 			ResultSet retrieve = stat.executeQuery("SELECT RESERVATION.Ref_no, Date, C_Fname,C_Lname, Name, Quantity\n"
 					+ "FROM RESERVATION, CUSTOMER, ITEM, ORDERED_BY\n"
 					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Ref_no = ORDERED_BY.Ref_no AND ORDERED_BY.Item_code = ITEM.Item_code;");
-
+			
 			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tMenue Item\tQuantity");
 
 			while (retrieve.next())
-				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
-						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
-						+ retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
-
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t" + retrieve.getString("C_Fname") + " "+ retrieve.getString("C_Lname") + "\t" +retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unseccesful");
 		}
 	}
+   
+   static void UpdateEmployeeSalary() {
+    try {
+        System.out.print("Enter the ID of the employee whose salary you'd like to update: ");
+        String id = read.next();
+
+        System.out.print("Enter the new salary: ");
+        double newSalary = read.nextDouble();
+        
+        stat.executeUpdate("UPDATE EMPLOYEE SET Salary = " + newSalary + " WHERE ID = '" + id + "';");
+        System.out.println("Employee salary updated successfully!");
+        }
+        
+     catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateEmployeeDistrict() {
+    try {
+        System.out.print("Enter the ID of the employee whose district you'd like to update: ");
+        String id = read.next();
+        read.nextLine();  
+        
+        System.out.print("Enter the new district: ");
+        String newDistrict = read.nextLine();
+        
+        stat.executeUpdate("UPDATE EMPLOYEE SET District = '" + newDistrict + "' WHERE ID = '" + id + "';");
+        System.out.println("Employee district updated successfully!"); 
+    } 
+    
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateCustomerEmail() {
+    try {
+        System.out.print("Enter the phone number of the customer whose email you'd like to update: ");
+        String phone = read.next();
+        read.nextLine();  
+        
+        System.out.print("Enter the new email: ");
+        String newEmail = read.nextLine();
+        
+        stat.executeUpdate("UPDATE CUSTOMER SET Email = '" + newEmail + "' WHERE Cphone_num = '" + phone + "';");
+        System.out.println("Customer email updated successfully!");  
+    } 
+    
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
+static void UpdateNumOfPpl() {
+    try {
+        System.out.print("Enter the reference number of the reservation you'd like to update: ");
+        String ref = read.next();
+        
+        System.out.print("Enter the new number of people: ");
+        int numPeople = read.nextInt();
+        
+        stat.executeUpdate("UPDATE RESERVATION SET Num_of_people = " + numPeople + " WHERE Ref_no = '" + ref + "';");
+        System.out.println("Number of people in reservation updated successfully!");  
+    }
+    
+     catch (Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println("Operation Unsuccessful");
+    }
+}
 
 } // end class
