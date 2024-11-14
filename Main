@@ -494,44 +494,6 @@ public class CSC380 {
 		}
 	}
 
-	static void ManagerRetrieve4() {
-		try {
-			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
-					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
-					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
-
-			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
-
-			while (retrieve.next())
-				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
-						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
-						+ retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unseccesful");
-		}
-	}
-
-	static void HostRetrieve4() {
-		try {
-			ResultSet retrieve = stat.executeQuery("SELECT RESERVATION.Ref_no, Date, C_Fname,C_Lname, Name, Quantity\n"
-					+ "FROM RESERVATION, CUSTOMER, ITEM, ORDERED_BY\n"
-					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Ref_no = ORDERED_BY.Ref_no AND ORDERED_BY.Item_code = ITEM.Item_code;");
-
-			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tMenue Item\tQuantity");
-
-			while (retrieve.next())
-				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
-						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
-						+ retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Operation Unseccesful");
-		}
-	}
-
 	static void UpdateEmployeeSalary() {
 		try {
 			System.out.print("Enter the ID of the employee whose salary you'd like to update: ");
@@ -569,6 +531,25 @@ public class CSC380 {
 		}
 	}
 
+	static void ManagerRetrieve4() {
+		try {
+			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
+					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
+
+			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
+						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
+						+ retrieve.getString("E_Fname") + " " + retrieve.getString("E_Lname"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
+		}
+	}
+
 	static void UpdateCustomerEmail() {
 		try {
 			System.out.print("Enter the phone number of the customer whose email you'd like to update: ");
@@ -603,6 +584,25 @@ public class CSC380 {
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+	static void HostRetrieve4() {
+		try {
+			ResultSet retrieve = stat.executeQuery("SELECT RESERVATION.Ref_no, Date, C_Fname,C_Lname, Name, Quantity\n"
+					+ "FROM RESERVATION, CUSTOMER, ITEM, ORDERED_BY\n"
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Ref_no = ORDERED_BY.Ref_no AND ORDERED_BY.Item_code = ITEM.Item_code;");
+
+			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tMenue Item\tQuantity");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
+						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
+						+ retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
 		}
 	}
 
