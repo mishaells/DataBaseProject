@@ -701,7 +701,7 @@ public class CSC380 {
 			while (retrieve.next())
 				System.out.println(retrieve.getString("Ref_no") + "\t\t\t" + retrieve.getString("Date") + "\t\t"
 						+ retrieve.getString("C_Fname") + " " + retrieve.getString("C_Lname") + "\t"
-						+ retrieve.getString("Name") + "\t" + retrieve.getString("Quantity"));
+						+ retrieve.getString("Name") + "\t" + retrieve.getInt("Quantity"));
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
