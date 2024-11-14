@@ -2,18 +2,16 @@ package blancaDB;
 
 import java.awt.EventQueue;
 import java.sql.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
+import java.awt.Font;
 
 public class frame4HostCustomer extends JFrame {
 
@@ -23,10 +21,12 @@ public class frame4HostCustomer extends JFrame {
 	private JTextField txtlname;
 	private JTextField txtphonenum;
 	private JTextField txtmail;
-	private JTable table;
+	
+	static ResultSet rs;
 	
 	static Connection con = null;
 	static Statement stat = null;
+	private static JTable table;
 
 	/**
 	 * Launch the application.
@@ -35,31 +35,32 @@ public class frame4HostCustomer extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Connect();
 					frame4HostCustomer frame = new frame4HostCustomer();
 					frame.setVisible(true);
+					table_load();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-	//=================================forConnection???????==================================
-	public static void Connect() {
+
+	/**
+	 * Create the frame and initialize the database connection.
+	 */
+	public frame4HostCustomer() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		// Initialize database connection in the constructor
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
 			stat = con.createStatement();
+			//System.out.println("Database connected successfully.");
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(this, "Database connection failed: " + e.getMessage());
 			e.printStackTrace();
 		}
-}
-    //=========================================================================================
 
-	/**
-	 * Create the frame.
-	 */
-	public frame4HostCustomer() {
-		setBounds(100, 100, 524, 367);
+		setBounds(100, 100, 525, 367);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -67,108 +68,152 @@ public class frame4HostCustomer extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(8, 11, 344, 158);
-		panel.setBorder(new TitledBorder(null, "customer information", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBounds(8, 11, 344, 187);
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Customer Information", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.darkShadow")));
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("First Name");
-		lblNewLabel_1.setBounds(6, 16, 81, 17);
-		panel.add(lblNewLabel_1);
+		JLabel lblFirstName = new JLabel("First Name");
+		lblFirstName.setBounds(10, 42, 81, 17);
+		panel.add(lblFirstName);
 		
 		txtfname = new JTextField();
-		txtfname.setBounds(97, 15, 237, 17);
+		txtfname.setBounds(97, 42, 237, 17);
 		panel.add(txtfname);
 		txtfname.setColumns(10);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Last Name");
-		lblNewLabel_1_1.setBounds(6, 44, 81, 17);
-		panel.add(lblNewLabel_1_1);
+		JLabel lblLastName = new JLabel("Last Name");
+		lblLastName.setBounds(10, 69, 81, 17);
+		panel.add(lblLastName);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Phone Number");
-		lblNewLabel_1_2.setBounds(6, 72, 81, 17);
-		panel.add(lblNewLabel_1_2);
+		JLabel lblPhoneNumber = new JLabel("Phone Number");
+		lblPhoneNumber.setBounds(10, 97, 81, 17);
+		panel.add(lblPhoneNumber);
 		
-		JLabel lblNewLabel_1_3 = new JLabel("Email");
-		lblNewLabel_1_3.setBounds(6, 100, 81, 17);
-		panel.add(lblNewLabel_1_3);
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(10, 125, 81, 17);
+		panel.add(lblEmail);
 		
 		txtlname = new JTextField();
 		txtlname.setColumns(10);
-		txtlname.setBounds(97, 42, 237, 17);
+		txtlname.setBounds(97, 69, 237, 17);
 		panel.add(txtlname);
 		
 		txtphonenum = new JTextField();
 		txtphonenum.setColumns(10);
-		txtphonenum.setBounds(97, 70, 237, 17);
+		txtphonenum.setBounds(97, 97, 237, 17);
 		panel.add(txtphonenum);
 		
 		txtmail = new JTextField();
 		txtmail.setColumns(10);
-		txtmail.setBounds(97, 98, 237, 17);
+		txtmail.setBounds(97, 125, 237, 17);
 		panel.add(txtmail);
 		
 		JButton btnInsert = new JButton("INSERT");
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String fname = txtfname.getText();
+				String lname = txtlname.getText();
+				String phone = txtphonenum.getText();
+				String email = txtmail.getText();
 				
-				//blancaDB.InsertCustomer();
-				
-				String fname,lname,phone,email;
-				
-				fname = txtfname.getText();
-				lname = txtlname.getText();
-				phone = txtphonenum.getText();
-				email = txtmail.getText();
-				try {
-				stat.executeUpdate(
-						"INSERT INTO CUSTOMER VALUES('" + fname + "', '" + lname + "', '" + phone + "', '" + email + "');");
-				JOptionPane.showMessageDialog(null, "Operation executed successfully!");
-				
-			}catch (Exception e1) {
-				System.out.println(e1.getMessage());
-				System.out.println("Operation Unseccesful");
+				// Check if stat is initialized before executing SQL command
+				if (stat != null) {
+					try {
+						stat.executeUpdate("INSERT INTO CUSTOMER (C_Fname, C_Lname, Cphone_num, Email) VALUES('" + fname + "', '" + lname + "', '" + phone + "', '" + email + "');");
+						table_load();
+						JOptionPane.showMessageDialog(null, "Customer added successfully!");
+					} catch (SQLException ex) {
+						JOptionPane.showMessageDialog(null, "Insert operation failed: " + ex.getMessage());
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Database connection not established.");
+				}
 			}
-		}
 		});
 		btnInsert.setBounds(354, 15, 150, 49);
 		contentPane.add(btnInsert);
+		
+		JButton btnDelete = new JButton("DELETE");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String phone = txtphonenum.getText();
+				if (stat != null) {
+					try {
+						stat.executeUpdate("DELETE FROM CUSTOMER WHERE Cphone_num = '" + phone + "';");
+						table_load();
+						JOptionPane.showMessageDialog(null, "Customer deleted successfully!");
+					} catch (SQLException ex) {
+						JOptionPane.showMessageDialog(null, "Delete operation failed: " + ex.getMessage());
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Database connection not established.");
+				}
+			}
+		});
+		btnDelete.setBounds(354, 66, 150, 49);
+		contentPane.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("UPDATE");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String phone = txtphonenum.getText();
+				String email = txtmail.getText();
 				
-				
+				if (stat != null) {
+					try {
+						stat.executeUpdate("UPDATE CUSTOMER SET Email = '" + email + "' WHERE Cphone_num = '" + phone + "';");
+						table_load();
+						JOptionPane.showMessageDialog(null, "Customer email updated successfully!");
+					} catch (Exception e1) {
+						System.out.println(e1.getMessage());
+						JOptionPane.showMessageDialog(null, "update operation failed: " + e1.getMessage());
+					}
+				} else {
+						JOptionPane.showMessageDialog(null, "Database connection not established.");
+					}
 				
 			}
 		});
 		btnUpdate.setBounds(354, 117, 150, 49);
 		contentPane.add(btnUpdate);
 		
-		JButton btnDelete = new JButton("DELETE");
-		btnDelete.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-						
-						String phone = txtphonenum.getText();
-						try {
-						stat.executeUpdate("DELETE FROM CUSTOMER WHERE Cphone_num = '" + phone + "';");
-						JOptionPane.showMessageDialog(null, "Operation executed successfully!");
-
-					} catch (Exception e1) {
-						System.out.println(e1.getMessage());
-						System.out.println("Operation Unseccesful");
-					}
-			}
-		});
-		btnDelete.setBounds(354, 66, 150, 49);
-		contentPane.add(btnDelete);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(8, 173, 496, 150);
+		scrollPane.setBounds(10, 209, 494, 110);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNoteToUpdate = new JLabel("<html> Note: to update the customer email enter the customer email and phone number only.</html>");
+		lblNoteToUpdate.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNoteToUpdate.setBounds(354, 169, 150, 38);
+		contentPane.add(lblNoteToUpdate);
+		table_load();
 	}
+	
+	
+	public static void table_load() {
+		if (stat != null) {
+	    try {
+	        rs = stat.executeQuery("SELECT * FROM customer");
+	        
+	        // Assuming ResultSet has columns that match your JTable structure
+	        DefaultTableModel model = new DefaultTableModel(new String[]{"First name", "Last name", "Phone number", "Email"}, 0); // Define your column names
+	        while (rs.next())
+	            model.addRow(new Object[]{rs.getString("C_Fname"), rs.getString("C_Lname"),rs.getString("Cphone_num"),rs.getString("Email")});
+	        
+	        table.setModel(model);
+	    } catch (SQLException e1) {
+	    e1.printStackTrace();
+	    }
+		}
+	 else {
+		JOptionPane.showMessageDialog(null, "Database connection not established.");
+	}
+	}
+	
+	
+	
 }
