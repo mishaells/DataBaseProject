@@ -1,11 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `blancadatabase` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `blancadatabase`;
-SET foreign_key_checks = 0;
-
+--
 -- Host: localhost    Database: blancadatabase
 -- ------------------------------------------------------
 -- Server version	9.1.0
-
+SET foreign_key_checks =0;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -43,7 +42,7 @@ CREATE TABLE `BRANCH` (
 
 LOCK TABLES `BRANCH` WRITE;
 /*!40000 ALTER TABLE `BRANCH` DISABLE KEYS */;
-INSERT INTO `BRANCH` VALUES ('1122','Riyadh Front','Riyadh','0115792386','1164379632'),('1234','Al-Sulimaniya','Riyadh','0111234567','1122334455'),('2964','Al Khalidiyyah','Jeddah','0117382378',NULL),('6509','Olaya','Al Khobar','0117539786',NULL),('9567','Al Rabwah','Tabuk','0117676745',NULL);
+INSERT INTO `BRANCH` VALUES ('1122','Riyadh Front','Riyadh','0115792386','1164379632'),('1234','Al-Sulimaniya','Riyadh','0111234567','1122334455'),('2964','Al Khalidiyyah','Jeddah','0117382378','1154268652'),('6509','Olaya','Al Khobar','0117539786',NULL),('9567','Al Rabwah','Tabuk','0117676745',NULL);
 /*!40000 ALTER TABLE `BRANCH` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +106,7 @@ CREATE TABLE `EMPLOYEE` (
 
 LOCK TABLES `EMPLOYEE` WRITE;
 /*!40000 ALTER TABLE `EMPLOYEE` DISABLE KEYS */;
-INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',17000,'0555123456','King Abdullah','Al-Rayan','12345','Riyadh','Saudi','1234'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',17000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',10000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',10000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122');
+INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',17000,'0555123456','King Abdullah','Al-Rayan','12345','Riyadh','Saudi','1234'),('1154268652','Meshal','Anas','Taha','Manager',17000,'0553876234','King Fahad','Al-Rayan','16281','Jeddah','Saudi','2964'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',17000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',10000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',10000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122');
 /*!40000 ALTER TABLE `EMPLOYEE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-SET foreign_key_checks = 1;
-
-
--- Dump completed on 2024-11-14 19:46:01
+SET foreign_key_checks =1;
