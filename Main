@@ -589,7 +589,7 @@ static void UpdateNumOfPpl() {
         System.out.print("Enter the new number of people: ");
         int numPeople = read.nextInt();
         
-        stat.executeUpdate("UPDATE RESERVATION SET Num_of_people = " + numPeople + " WHERE Ref_no = '" + ref + "';");
+        stat.executeUpdate("UPDATE RESERVATION SET Num_of_ppl = " + numPeople + " WHERE Ref_no = '" + ref + "';");
         System.out.println("Number of people in reservation updated successfully!");  
     }
     
