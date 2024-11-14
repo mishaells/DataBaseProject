@@ -262,8 +262,8 @@ public class frame5HostReservation extends JFrame {
 		table_1 = new JTable();
 		scrollPane.setViewportView(table_1);
 		
-		JLabel lblNewLabel = new JLabel("<html> Note: to update number of people enter number of people and refrence number only.</html>");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		JLabel lblNewLabel = new JLabel("<html> Note: To delete a reservation, enter the reference number only. To update number of people, enter the refrence number and the updated number of people only.</html>");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblNewLabel.setBounds(354, 169, 150, 38);
 		contentPane_1.add(lblNewLabel);
 		table_load();
