@@ -204,7 +204,7 @@ public class CSC380 {
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
 					case '1':
-						// HostRetrieve1();
+					         HostRetrieve1();
 						break;
 					case '2':
 						HostRetrieve2();
@@ -627,6 +627,27 @@ public class CSC380 {
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("Operation Unsuccessful");
+		}
+	}
+
+          static void HostRetrieve1() {
+		try {
+			
+			System.out.print("Enter the Category: ");
+			String Category = read.next();
+
+			System.out.print("Enter the Price: ");
+			float Price = read.nextFloat();
+			
+			ResultSet retrieve = stat.executeQuery("SELECT name FROM ITEM WHERE category = '" + Category + "'AND Price > " + Price);
+			System.out.println("Name\t");
+
+			while (retrieve.next())
+				System.out.println(retrieve.getString("Name"));
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Operation Unseccesful");
 		}
 	}
 
