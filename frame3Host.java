@@ -45,7 +45,7 @@ public class frame3Host extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Select a tabel to Insert,Delete and Update from");
+		JLabel lblNewLabel = new JLabel("Select a tabel to Insert, Delete or Update");
 		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 61, 416, 14);
@@ -73,7 +73,7 @@ public class frame3Host extends JFrame {
 		});
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("for retrieval operations click here!");
+		JLabel lblNewLabel_1 = new JLabel("For retrieval operations click here!");
 		lblNewLabel_1.setFont(new Font("Georgia", Font.PLAIN, 14));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(10, 139, 416, 14);
