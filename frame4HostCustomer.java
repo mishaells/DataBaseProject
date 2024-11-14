@@ -186,7 +186,7 @@ public class frame4HostCustomer extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNoteToUpdate = new JLabel("<html> Note: To update a customer's email, enter their phone number and updated email only. To delete a customer enter their phone number only </html>");
+		JLabel lblNoteToUpdate = new JLabel("<html> Note: To delete a customer enter their phone number only. To update a customer's email, enter their phone number and updated email only. </html>");
 		lblNoteToUpdate.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		lblNoteToUpdate.setBounds(354, 169, 150, 38);
 		contentPane.add(lblNoteToUpdate);
