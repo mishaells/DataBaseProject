@@ -149,8 +149,6 @@ public class CSC380 {
 					System.out.println("Choose table to insert into:");
 					System.out.println("1. RESERVATION");
 					System.out.println("2. CUSTOMER");
-					System.out.println("3. ITEM");
-					System.out.println("4. ORDERED_BY");
 
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
@@ -160,12 +158,6 @@ public class CSC380 {
 					case '2':
 						InsertCustomer();
 						break;
-					case '3':
-						InsertItem();
-						break;
-					case '4':
-						InsertOrderedBy();
-						break;
 					} // end table switch
 					break; // break insert
 
@@ -173,8 +165,6 @@ public class CSC380 {
 					System.out.println("Choose table to delete from:");
 					System.out.println("1. RESERVATION");
 					System.out.println("2. CUSTOMER");
-					System.out.println("3. ITEM");
-					System.out.println("4. ORDERED_BY");
 
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
@@ -183,12 +173,6 @@ public class CSC380 {
 						break;
 					case '2':
 						DeleteCustomer();
-						break;
-					case '3':
-						DeleteItem();
-						break;
-					case '4':
-						DeleteOrderedBy();
 						break;
 					}
 					break; // break delete
