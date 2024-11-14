@@ -1,10 +1,11 @@
 CREATE DATABASE  IF NOT EXISTS `blancadatabase` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `blancadatabase`;
---
+
 -- Host: localhost    Database: blancadatabase
 -- ------------------------------------------------------
 -- Server version	9.1.0
 SET foreign_key_checks =0;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -106,7 +107,7 @@ CREATE TABLE `EMPLOYEE` (
 
 LOCK TABLES `EMPLOYEE` WRITE;
 /*!40000 ALTER TABLE `EMPLOYEE` DISABLE KEYS */;
-INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',17000,'0555123456','King Abdullah','Al-Rayan','12345','Riyadh','Saudi','1234'),('1154268652','Meshal','Anas','Taha','Manager',17000,'0553876234','King Fahad','Al-Rayan','16281','Jeddah','Saudi','2964'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',17000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',10000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',10000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122');
+INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',15000,'0555123456','King Abdullah','Al-Rayan','12345','Riyadh','Saudi','1234'),('1154268652','Meshal','Anas','Taha','Manager',15000,'0553876234','King Fahad','Al-Rayan','16281','Jeddah','Saudi','2964'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',15000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',10000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',5000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122');
 /*!40000 ALTER TABLE `EMPLOYEE` ENABLE KEYS */;
 UNLOCK TABLES;
 
