@@ -56,7 +56,7 @@ public class frame7Manger extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frame8Manger f8 = new frame8Manger();
+				frame8Employee f8 = new frame8Employee();
 				f8.setVisible(true);
 				
 			}
@@ -69,7 +69,7 @@ public class frame7Manger extends JFrame {
 		JButton btnNewButton_1 = new JButton("Edit Customers");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame4HostCustomer frame = new frame4HostCustomer();
+				frame4Customer frame = new frame4Customer();
 				frame.setVisible(true);
 			}
 		});
@@ -81,7 +81,7 @@ public class frame7Manger extends JFrame {
 		JButton btnNewButton_2 = new JButton("Edit Reservations");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame5HostReservation frame = new frame5HostReservation();
+				frame5Reservation frame = new frame5Reservation();
 				frame.setVisible(true);
 			}
 		});
