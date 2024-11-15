@@ -1,4 +1,3 @@
-package blancaDB;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -53,29 +52,6 @@ public class frame7Manger extends JFrame {
 		lblNewLabel_1.setBounds(177, 80, 127, 27);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnNewButton_1 = new JButton("Edit Customers");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame4HostCustomer frame = new frame4HostCustomer();
-				frame.setVisible(true);
-			}
-		});
-		
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_1.setBounds(64, 140, 147, 49);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Edit Reservations");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame5HostReservation frame = new frame5HostReservation();
-				frame.setVisible(true);
-			}
-		});
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBounds(261, 140, 147, 49);
-		contentPane.add(btnNewButton_2);
-		
 		JButton btnNewButton = new JButton("Edit Employees");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,8 +63,31 @@ public class frame7Manger extends JFrame {
 		});
 		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton.setBounds(64, 190, 147, 49);
+		btnNewButton.setBounds(64, 140, 147, 49);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Edit Customers");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame4HostCustomer frame = new frame4HostCustomer();
+				frame.setVisible(true);
+			}
+		});
+		
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_1.setBounds(261, 140, 147, 49);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Edit Reservations");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame5HostReservation frame = new frame5HostReservation();
+				frame.setVisible(true);
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_2.setBounds(64, 190, 147, 49);
+		contentPane.add(btnNewButton_2);
 		
 		JButton btnRetrievals = new JButton("Retrievals");
 		btnRetrievals.addActionListener(new ActionListener() {
