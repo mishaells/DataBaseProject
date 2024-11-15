@@ -1,5 +1,3 @@
-package blancaDB;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,7 +17,6 @@ public class frame1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	public static  blancaDB objBlanca = new blancaDB();
 
 	/**
 	 * Launch the application.
@@ -69,6 +66,7 @@ public class frame1 extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame2Manger addframe = new frame2Manger();
+				setVisible(false);
 				addframe.setVisible(true);
 			}
 		});
