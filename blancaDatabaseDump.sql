@@ -1,11 +1,11 @@
 CREATE DATABASE  IF NOT EXISTS `blancadatabase` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `blancadatabase`;
-
+--
 -- Host: localhost    Database: blancadatabase
 -- ------------------------------------------------------
 -- Server version	9.1.0
 
-SET foreign_key_checks =0;
+SET foreign_key_checks = 0;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -108,7 +108,7 @@ CREATE TABLE `EMPLOYEE` (
 
 LOCK TABLES `EMPLOYEE` WRITE;
 /*!40000 ALTER TABLE `EMPLOYEE` DISABLE KEYS */;
-INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',15000,'0555123456','King Abdullah','Al-Rabwah','12345','Riyadh','Saudi','1234'),('1154268652','Meshal','Anas','Taha','Manager',15000,'0553876234','King Fahad','Al-Rayan','16281','Jeddah','Saudi','2964'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',15000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1204839201','Mansour','Saleh','Al-Ghamdi','Host',6000,'0589876543','Olaya St','Al Olaya','31942','Tabuk','Saudi','9567'),('1234509876','Noura','Omar','Al-Qahtani','Manager',15000,'0543321234','Umm Salamah St','Al Qiblatayn','41411','Al Khobar','Saudi','6509'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',5000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1245080237','Khaled','Hasan','Alsalem','Waiter',5000,'0507318506','Rumah St','Al-Nahdah','12256','Riyadh','Saudi','1122'),('1250983745','Ahmed','Saad','Al-Shahrani','Manager',15000,'0567894321','Prince Naif St','Al Manar','31952','Al Khobar','Saudi','6509'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',5000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122'),('1278094561','Laila','Ibrahim','Al-Harbi','Manager',15000,'0539912345','Al Azizia St','Al Khalidiya','24312','Tabuk','Saudi','9567'),('1302984751','Saad','Mohammed','Al-Omari','Waiter',5000,'0546789123','King Abdullah St','Al Malaz','12233','Riyadh','Saudi','1234'),('1345027890','Aisha','Ali','Al-Mutairi','Waiter',5000,'0552239874','King Fahd St','Al Faisaliyah','23451','Jeddah','Saudi','2964'),('1456298374','Hana','Faisal','Al-Rashidi','Host',6000,'0501223344','Tahlia St','Al Rawdah','23514','Jeddah','Saudi','2964');
+INSERT INTO `EMPLOYEE` VALUES ('1122334455','Mohammed','Abdullah','Alharbi','Manager',15000,'0542719273','King Abdullah','Al-Rabwah','12345','Riyadh','Saudi','1234'),('1154268652','Meshal','Anas','Taha','Manager',15000,'0553876234','King Fahad','Al-Rayan','16281','Jeddah','Saudi','2964'),('1164379632','Ahmed','Abdulaziz','Alqahtani','Manager',15000,'0528490274','Al-Safah','Al-Olaya','74298','Riyadh','Saudi','1122'),('1204839201','Mansour','Saleh','Al-Ghamdi','Host',6000,'0589876543','Olaya St','Al Olaya','31942','Tabuk','Saudi','9567'),('1234509876','Noura','Omar','Al-Qahtani','Manager',15000,'0543321234','Umm Salamah St','Al Qiblatayn','41411','Al Khobar','Saudi','6509'),('1234567890','Sarah','Mohammed','Alrajhi','Waiter',5000,'0583492583','Prince Turki St','Takkasusi','11223','Riyadh','Saudi','1234'),('1245080237','Khaled','Hasan','Alsalem','Waiter',5000,'0507318506','Rumah St','Al-Nahdah','12256','Riyadh','Saudi','1122'),('1250983745','Ahmed','Saad','Al-Shahrani','Manager',15000,'0567894321','Prince Naif St','Al Manar','31952','Al Khobar','Saudi','6509'),('1264839272','Norah','Fahad','Abdulaziz','Waiter',5000,'0532738927','King Saud','Al-Rawabi','16289','Riyadh','Saudi','1122'),('1278094561','Laila','Ibrahim','Al-Harbi','Manager',15000,'0539912345','Al Azizia St','Al Khalidiya','24312','Tabuk','Saudi','9567'),('1302984751','Saad','Mohammed','Al-Omari','Waiter',5000,'0546789123','King Abdullah St','Al Malaz','12233','Riyadh','Saudi','1234'),('1345027890','Aisha','Ali','Al-Mutairi','Waiter',5000,'0552239874','King Fahd St','Al Faisaliyah','23451','Jeddah','Saudi','2964'),('1456298374','Hana','Faisal','Al-Rashidi','Host',6000,'0501223344','Tahlia St','Al Rawdah','23514','Jeddah','Saudi','2964');
 /*!40000 ALTER TABLE `EMPLOYEE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-SET foreign_key_checks =1;
+SET foreign_key_checks = 1;
