@@ -111,7 +111,7 @@ public class frame6HostRetrievals extends JFrame {
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
 		panel.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("<html>Retrieve the TABLE NUMBER of a specific reservation by intering its refernce number.</html>");
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("<html>Retrieve the TABLE NUMBER of a specific reservation by entering its refernce number.</html>");
 		rdbtnNewRadioButton_1.setBounds(22, 57, 260, 37);
 		rdbtnNewRadioButton_1.setFont(new Font("Georgia", Font.PLAIN, 11));
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
