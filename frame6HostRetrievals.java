@@ -90,7 +90,7 @@ public class frame6HostRetrievals extends JFrame {
 		contentPane.add(panel);
 		
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("<html>Retrieve NAMES of ITEMS with specific catagory and price.</html>");
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("<html>Retrieve NAMES of ITEMS of a specific catagory that exceed a specific price.</html>");
 		rdbtnNewRadioButton.setBounds(22, 17, 260, 37);
 		rdbtnNewRadioButton.setFont(new Font("Georgia", Font.PLAIN, 11));
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
@@ -111,7 +111,7 @@ public class frame6HostRetrievals extends JFrame {
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
 		panel.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("<html>Retrieve the TABLE NUMBER for specific reservation reference number.</html>");
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("<html>Retrieve the TABLE NUMBER of a specific reservation by intering its refernce number.</html>");
 		rdbtnNewRadioButton_1.setBounds(22, 57, 260, 37);
 		rdbtnNewRadioButton_1.setFont(new Font("Georgia", Font.PLAIN, 11));
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
@@ -143,7 +143,7 @@ public class frame6HostRetrievals extends JFrame {
 		rdbtnNewRadioButton_2.setVerticalAlignment(SwingConstants.TOP);
 		panel.add(rdbtnNewRadioButton_2);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("<html>Retrieve RESRVATION DATES and the NAMES of customers and the ITEMS they ordered and their QUANTITIES.</html>");
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("<html>Retrieve all RESRVATION DATES and the NAMES of customers and the ITEMS they ordered along with their QUANTITIES.</html>");
 		rdbtnNewRadioButton_3.setBounds(22, 148, 260, 50);
 		rdbtnNewRadioButton_3.setFont(new Font("Georgia", Font.PLAIN, 11));
 		rdbtnNewRadioButton_3.addActionListener(new ActionListener() {
@@ -322,7 +322,7 @@ public class frame6HostRetrievals extends JFrame {
 									+ "FROM RESERVATION, CUSTOMER, ITEM, ORDERED_BY\n"
 									+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Ref_no = ORDERED_BY.Ref_no AND ORDERED_BY.Item_code = ITEM.Item_code;");
 						       
-					        DefaultTableModel model = new DefaultTableModel(new String[]{"Reference Number","Reservation Date","Customer First Name","Customer Last Name","Menue Item","Quantity"}, 0); // Define your column names
+					        DefaultTableModel model = new DefaultTableModel(new String[]{"Reference Number","Reservation Date","Customer First Name","Customer Last Name","Menu Item","Quantity"}, 0); // Define your column names
 					        while (rs.next())
 					            model.addRow(new Object[]{rs.getString("Ref_no"),rs.getString("Date"),rs.getString("C_Fname"),rs.getString("C_Lname"),rs.getString("Name"), rs.getInt("Quantity")});
 					        
