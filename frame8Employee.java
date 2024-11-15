@@ -25,7 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 //import javax.swing.ScrollPaneConstants;
 
-public class frame8Manger extends JFrame {
+public class frame8Employee extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -53,7 +53,7 @@ public class frame8Manger extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame8Manger frame = new frame8Manger();
+					frame8Employee frame = new frame8Employee();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +65,7 @@ public class frame8Manger extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frame8Manger() {
+	public frame8Employee() {
 		
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
