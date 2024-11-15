@@ -93,7 +93,7 @@ public class frame7Manger extends JFrame {
 		btnRetrievals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frame9Manger f9 = new frame9Manger();
+				frame9MangerRetrievals f9 = new frame9MangerRetrievals();
 				setVisible(false);
 				f9.setVisible(true);
 			}
