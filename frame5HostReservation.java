@@ -96,78 +96,87 @@ public class frame5HostReservation extends JFrame {
 		contentPane_1.add(panel);
 		
 		JLabel lblRefrenceNumber = new JLabel("Refrence Number");
-		lblRefrenceNumber.setBounds(6, 16, 81, 17);
+		lblRefrenceNumber.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblRefrenceNumber.setBounds(6, 16, 104, 17);
 		panel.add(lblRefrenceNumber);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(97, 15, 237, 17);
+		textField.setBounds(120, 15, 214, 17);
 		panel.add(textField);
 		
 		JLabel lblDate = new JLabel("Date");
-		lblDate.setBounds(6, 36, 81, 17);
+		lblDate.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblDate.setBounds(6, 36, 104, 17);
 		panel.add(lblDate);
 		
 		JLabel lblStartTime = new JLabel("Start Time");
-		lblStartTime.setBounds(6, 56, 81, 17);
+		lblStartTime.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblStartTime.setBounds(6, 56, 104, 17);
 		panel.add(lblStartTime);
 		
 		JLabel lblNumberOfPeople = new JLabel("Number of people");
-		lblNumberOfPeople.setBounds(6, 96, 81, 17);
+		lblNumberOfPeople.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblNumberOfPeople.setBounds(6, 96, 104, 17);
 		panel.add(lblNumberOfPeople);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(97, 35, 237, 17);
+		textField_1.setBounds(120, 35, 214, 17);
 		panel.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(97, 55, 237, 17);
+		textField_2.setBounds(120, 55, 214, 17);
 		panel.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(97, 75, 237, 17);
+		textField_3.setBounds(120, 75, 214, 17);
 		panel.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(97, 95, 237, 17);
+		textField_4.setBounds(120, 95, 214, 17);
 		panel.add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(97, 115, 237, 17);
+		textField_5.setBounds(120, 115, 214, 17);
 		panel.add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(97, 135, 237, 17);
+		textField_6.setBounds(120, 135, 214, 17);
 		panel.add(textField_6);
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(97, 155, 237, 17);
+		textField_7.setBounds(120, 155, 214, 17);
 		panel.add(textField_7);
 		
-		JLabel lblBcode = new JLabel("Bcode");
-		lblBcode.setBounds(6, 116, 81, 17);
+		JLabel lblBcode = new JLabel("Branch code");
+		lblBcode.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblBcode.setBounds(6, 116, 104, 17);
 		panel.add(lblBcode);
 		
 		JLabel lblServersId = new JLabel("Servers ID");
-		lblServersId.setBounds(6, 136, 81, 17);
+		lblServersId.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblServersId.setBounds(6, 136, 104, 17);
 		panel.add(lblServersId);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
-		lblPhoneNumber.setBounds(6, 156, 81, 17);
+		lblPhoneNumber.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblPhoneNumber.setBounds(6, 156, 104, 17);
 		panel.add(lblPhoneNumber);
 		
 		JLabel lblTableNumber_4 = new JLabel("Table Number");
-		lblTableNumber_4.setBounds(6, 76, 81, 17);
+		lblTableNumber_4.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblTableNumber_4.setBounds(6, 76, 104, 17);
 		panel.add(lblTableNumber_4);
 		
 		JButton btnInsert = new JButton("INSERT");
+		btnInsert.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -204,6 +213,7 @@ public class frame5HostReservation extends JFrame {
 		contentPane_1.add(btnInsert);
 		
 		JButton btnDelete = new JButton("DELETE");
+		btnDelete.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -230,6 +240,7 @@ public class frame5HostReservation extends JFrame {
 		contentPane_1.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("UPDATE");
+		btnUpdate.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -263,7 +274,7 @@ public class frame5HostReservation extends JFrame {
 		scrollPane.setViewportView(table_1);
 		
 		JLabel lblNewLabel = new JLabel("<html> Note: To delete a reservation, enter the reference number only. To update number of people, enter the refrence number and the updated number of people only.</html>");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 7));
 		lblNewLabel.setBounds(354, 169, 150, 38);
 		contentPane_1.add(lblNewLabel);
 		table_load();
