@@ -45,7 +45,7 @@ public class frame3Host extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Select a tabel to Insert,Delete or Update");
+		JLabel lblNewLabel = new JLabel("Select a tabel to Insert, Delete or Update");
 		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 61, 416, 14);
