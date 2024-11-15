@@ -74,42 +74,47 @@ public class frame4HostCustomer extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblFirstName = new JLabel("First Name");
-		lblFirstName.setBounds(10, 42, 81, 17);
+		lblFirstName.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblFirstName.setBounds(10, 43, 100, 17);
 		panel.add(lblFirstName);
 		
 		txtfname = new JTextField();
-		txtfname.setBounds(97, 42, 237, 17);
+		txtfname.setBounds(120, 42, 214, 17);
 		panel.add(txtfname);
 		txtfname.setColumns(10);
 		
 		JLabel lblLastName = new JLabel("Last Name");
-		lblLastName.setBounds(10, 69, 81, 17);
+		lblLastName.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblLastName.setBounds(10, 71, 100, 17);
 		panel.add(lblLastName);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
-		lblPhoneNumber.setBounds(10, 97, 81, 17);
+		lblPhoneNumber.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblPhoneNumber.setBounds(10, 99, 100, 17);
 		panel.add(lblPhoneNumber);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 125, 81, 17);
+		lblEmail.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblEmail.setBounds(10, 125, 100, 17);
 		panel.add(lblEmail);
 		
 		txtlname = new JTextField();
 		txtlname.setColumns(10);
-		txtlname.setBounds(97, 69, 237, 17);
+		txtlname.setBounds(120, 69, 214, 17);
 		panel.add(txtlname);
 		
 		txtphonenum = new JTextField();
 		txtphonenum.setColumns(10);
-		txtphonenum.setBounds(97, 97, 237, 17);
+		txtphonenum.setBounds(120, 97, 214, 17);
 		panel.add(txtphonenum);
 		
 		txtmail = new JTextField();
 		txtmail.setColumns(10);
-		txtmail.setBounds(97, 125, 237, 17);
+		txtmail.setBounds(120, 125, 214, 17);
 		panel.add(txtmail);
 		
 		JButton btnInsert = new JButton("INSERT");
+		btnInsert.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnInsert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String fname = txtfname.getText();
@@ -135,6 +140,7 @@ public class frame4HostCustomer extends JFrame {
 		contentPane.add(btnInsert);
 		
 		JButton btnDelete = new JButton("DELETE");
+		btnDelete.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String phone = txtphonenum.getText();
@@ -155,6 +161,7 @@ public class frame4HostCustomer extends JFrame {
 		contentPane.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("UPDATE");
+		btnUpdate.setFont(new Font("Georgia", Font.PLAIN, 13));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -186,8 +193,8 @@ public class frame4HostCustomer extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNoteToUpdate = new JLabel("<html> Note: To delete a customer, enter their phone number only. To update a customer's email, enter their phone number and updated email only. </html>");
-		lblNoteToUpdate.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		JLabel lblNoteToUpdate = new JLabel("<html> Note: To delete a customer enter their phone number only. To update a customer's email, enter their phone number and updated email only. </html>");
+		lblNoteToUpdate.setFont(new Font("Georgia", Font.PLAIN, 8));
 		lblNoteToUpdate.setBounds(354, 169, 150, 38);
 		contentPane.add(lblNoteToUpdate);
 		table_load();
