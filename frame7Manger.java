@@ -107,7 +107,7 @@ public class frame7Manger extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frame2Manger f2 = new frame2Manger();
+				frame2MangerVerification f2 = new frame2MangerVerification();
 				f2.setVisible(true);
 			}
 		});
