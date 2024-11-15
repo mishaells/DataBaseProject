@@ -120,7 +120,18 @@ public class frame9MangerRetrievals extends JFrame {
 	    table.setModel(tableModel);
 	    
 		scrollPane.setViewportView(table);
-	
+
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame7Manger f7 = new frame7Manger();
+				setVisible(false);
+				f7.setVisible(true);
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(10, 11, 89, 23);
+		contentPane.add(btnNewButton);
 		
 		comboBox.addActionListener(new ActionListener() {
 		    @Override
