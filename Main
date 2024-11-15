@@ -576,9 +576,11 @@ public class CSC380 {
 
 	static void ManagerRetrieve4() {
 		try {
+			System.out.print("Enter server's ID: ");
+			String id = read.next();
 			ResultSet retrieve = stat.executeQuery("SELECT Ref_no, Date, C_Fname,C_Lname, E_Fname, E_Lname\n"
 					+ "FROM RESERVATION, CUSTOMER,EMPLOYEE\n"
-					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID;");
+					+ "WHERE CUSTOMER.Cphone_num = RESERVATION.Cphone_num AND RESERVATION.Servers_ID = EMPLOYEE.ID AND ID = " + id + ";");
 
 			System.out.println("Reference Number\tReservation Date\tCustomer Name\t\tServer Name");
 
