@@ -65,7 +65,7 @@ public class frame1 extends JFrame {
 		JButton btnNewButton = new JButton("MANAGER");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame2Manger addframe = new frame2Manger();
+				frame2MangerVerification addframe = new frame2MangerVerification();
 				setVisible(false);
 				addframe.setVisible(true);
 			}
