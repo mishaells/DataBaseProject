@@ -1,3 +1,5 @@
+package blancaDB;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
