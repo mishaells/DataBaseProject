@@ -1,3 +1,4 @@
+package blancaDB;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
-public class frame2Manger extends JFrame {
+public class frame2MangerVerification extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -34,7 +35,7 @@ public class frame2Manger extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame2Manger frame = new frame2Manger();
+					frame2MangerVerification frame = new frame2MangerVerification();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +47,7 @@ public class frame2Manger extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frame2Manger() {
+	public frame2MangerVerification() {
 		
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
@@ -111,7 +112,7 @@ public class frame2Manger extends JFrame {
 	                if (id.equals(inputId)) {
 	                	isValidManager = true;
 	                    if(!textField_1.getText().equals("12345")) { //check password
-	        	            JOptionPane.showMessageDialog( frame2Manger.this , "wrong password");
+	        	            JOptionPane.showMessageDialog( frame2MangerVerification.this , "wrong password");
 	                    	continue; }
 	                    
 	                    frame7Manger f = new frame7Manger();
@@ -122,7 +123,7 @@ public class frame2Manger extends JFrame {
 	            } //end while
 	            
 	            if(!isValidManager) 
-	            JOptionPane.showMessageDialog( frame2Manger.this , "wrong manager ID!"); 
+	            JOptionPane.showMessageDialog( frame2MangerVerification.this , "wrong manager ID!"); 
 
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
