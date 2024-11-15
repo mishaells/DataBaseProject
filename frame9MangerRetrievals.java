@@ -1,3 +1,5 @@
+package blancaDB;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -68,7 +70,7 @@ public class frame9MangerRetrievals extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 13));
 		comboBox.setBounds(137, 54, 627, 22);
 		contentPane.add(comboBox);
@@ -78,14 +80,8 @@ public class frame9MangerRetrievals extends JFrame {
 		comboBox.addItem("Total number of branches");
 		comboBox.addItem("All customers and reservations details assigned to a specific server (waiter)");
 
-		
-        String selectedItem = (String) comboBox.getSelectedItem();
-        
-        
-        
-
-
-		
+		        
+    		
 		JLabel lblNewLabel = new JLabel("Choose a retrieve option");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setBounds(303, 11, 259, 32);
