@@ -1,5 +1,3 @@
-package blancaDB;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,7 +23,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import java.awt.Font;
 
-public class frame5HostReservation extends JFrame {
+public class frame5Reservation extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -50,7 +48,7 @@ public class frame5HostReservation extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame5HostReservation frame = new frame5HostReservation();
+					frame5Reservation frame = new frame5Reservation();
 					frame.setVisible(true);
 					table_load();
 				} catch (Exception e) {
@@ -64,7 +62,7 @@ public class frame5HostReservation extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frame5HostReservation() {
+	public frame5Reservation() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blancadatabase", "root", "12345Abcde.");
