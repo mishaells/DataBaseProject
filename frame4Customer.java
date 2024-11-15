@@ -1,5 +1,3 @@
-package blancaDB;
-
 import java.awt.EventQueue;
 import java.sql.*;
 import javax.swing.*;
@@ -13,7 +11,7 @@ import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import java.awt.Font;
 
-public class frame4HostCustomer extends JFrame {
+public class frame4Customer extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +33,7 @@ public class frame4HostCustomer extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame4HostCustomer frame = new frame4HostCustomer();
+					frame4Customer frame = new frame4Customer();
 					frame.setVisible(true);
 					table_load();
 				} catch (Exception e) {
@@ -48,7 +46,7 @@ public class frame4HostCustomer extends JFrame {
 	/**
 	 * Create the frame and initialize the database connection.
 	 */
-	public frame4HostCustomer() {
+	public frame4Customer() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		// Initialize database connection in the constructor
 		try {
