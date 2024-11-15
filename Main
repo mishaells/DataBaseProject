@@ -114,7 +114,7 @@ public class CSC380 {
 					System.out.println("2. Total number of branches");
 					System.out.println(
 							"3. Employees names working in a specific branch, along with the branch's district and city");
-					System.out.println("4. Customer names and reservation details, including their server");
+					System.out.println("4. Customer names and reservation details of a specific server");
 
 					Choice2 = read.next().charAt(0);
 					switch (Choice2) {
