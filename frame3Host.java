@@ -1,5 +1,3 @@
-package blancaDB;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -55,7 +53,7 @@ public class frame3Host extends JFrame {
 		btnNewButton_1.setFont(new Font("Georgia", Font.PLAIN, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame4HostCustomer frame = new frame4HostCustomer();
+				frame4Customer frame = new frame4Customer();
 				frame.setVisible(true);
 			}
 		});
@@ -67,7 +65,7 @@ public class frame3Host extends JFrame {
 		btnNewButton.setBounds(225, 86, 120, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame5HostReservation frame = new frame5HostReservation();
+				frame5Reservation frame = new frame5Reservation();
 				frame.setVisible(true);
 			}
 		});
